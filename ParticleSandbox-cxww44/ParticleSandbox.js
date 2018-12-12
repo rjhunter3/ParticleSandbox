@@ -55,8 +55,11 @@ class particle {
             this.lastPos.y = 0;
         }
     }
-    draw(particlecount, particles) {
+    draw(particleCount, particles) {
         background(10);
+        if (mouseIsPressed && mouseButton == RIGHT) {
+            this.reset(particleCount, particles)
+        }
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
             p.move();
@@ -70,8 +73,7 @@ class particle {
             newPos.add(p.pos);
                 
             line(newPos.x, newPos.y, p.pos.x, p.pos.y);
-            
-        } 
+    } 
     
             
     }
