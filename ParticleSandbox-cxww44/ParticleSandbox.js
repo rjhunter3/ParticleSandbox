@@ -1,7 +1,3 @@
-var particleCount = 3000;
-var particles = [];
-var globalHue;
-
 
 class particle {
     constructor (x,y) {
@@ -24,7 +20,7 @@ class particle {
         let mouseThresh = 300;
         
         let mult = 0.001;
-        if (mouseIsPressed && mouseButton == CENTER) {
+        if (mouseIsPressed && mouseButton == LEFT) {
             mult *= -1;
         }
             
@@ -58,50 +54,42 @@ class particle {
             this.pos.y = 0;
             this.lastPos.y = 0;
         }
+    }
+    draw(particlecount, particles) {
+        background(10);
+        for (let i = 0; i < particles.length; i++) {
+            let p = particles[i];
+            p.move();
+                
+            stroke(p.hue, p.bright, 255);
+                
+            // Exaggerate vector from lastPos to pos.
+            let newPos = p.pos.copy();
+            newPos.sub(p.lastPos);
+            newPos.mult(15);
+            newPos.add(p.pos);
+                
+            line(newPos.x, newPos.y, p.pos.x, p.pos.y);
+            
+        } 
+    
             
     }
-}
-function setup() {
-	createCanvas(windowWidth, windowHeight);
-	colorMode(HSB, 255);
-	reset();
-}
-function draw() {
-	background(10);
-	for (let i = 0; i < particles.length; i++) {
-		let p = particles[i];
-		p.move();
-		
-		stroke(p.hue, p.bright, 255);
-		
-		// Exaggerate vector from lastPos to pos.
-		let newPos = p.pos.copy();
-		newPos.sub(p.lastPos);
-		newPos.mult(15);
-		newPos.add(p.pos);
-		
-		line(newPos.x, newPos.y, p.pos.x, p.pos.y);
-	}
-}
+    reset(particleCount, particles) {
+        globalHue = random(255);
+        
+        particles.splice(0, particles.length);
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new particle(random(width), random(height)));
+        }
+        
+        // Make sure mouse doesn't immediately affect particles.
+        mouseX = -9999;
+        mouseY = -9999;
+        
+        background(10);
+    }
+    
 
-
-function mouseClicked() {
-	reset();
-}
-
-
-function reset() {
-	globalHue = random(255);
-	
-	particles.splice(0, particles.length);
-	
-	for (let i = 0; i < particleCount; i++) {
-		particles.push(new particle(random(width), random(height)));
-	}
-	
-	// Make sure mouse doesn't immediately effect particles.
-	mouseX = -9999;
-	mouseY = -9999;
-	
-	background(10);
 }
