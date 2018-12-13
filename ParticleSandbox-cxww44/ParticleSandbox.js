@@ -9,7 +9,20 @@ class particle {
         this.drag = random(0.98, 0.99);
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
+		this.mouseThresh = 300
+		this.mult = 0.001
+		this.time = new Date()
+		
     }
+	get timediff() {
+		let time2 = new Date()
+		let timediff = time2 - this.time
+		return timediff
+	}
+	set date(time1) {
+		this.time = time1
+	}
+	
     move() {
         this.lastPos.x = this.pos.x;
         this.lastPos.y = this.pos.y;
@@ -17,18 +30,24 @@ class particle {
         this.vel.mult(this.drag);
         
         let mouseDist = dist(this.pos.x, this.pos.y, mouseX, mouseY);
-        let mouseThresh = 300;
         
-        let mult = 0.001;
         if (mouseIsPressed && mouseButton == LEFT) {
-            mult *= -1;
+			//let time2 = new Date()
+			//let timediff = time2 - this.time
+			// This provides a set time between left clicks to ensure clean switching between attract/repel
+            if (this.timediff > 1000){
+				this.mult *= -1;
+				this.date = new Date()
+			}
+		
+			
         }
             
-        if (mouseDist < mouseThresh) {
+        if (mouseDist < this.mouseThresh) {
           let push = new p5.Vector(this.pos.x, this.pos.y);
           push.sub(new p5.Vector(mouseX, mouseY));
           push.normalize();
-          push.mult((mouseThresh - mouseDist) * mult);
+          push.mult((this.mouseThresh - mouseDist) * this.mult);
           this.acc.add(push);
         }
             
@@ -59,6 +78,10 @@ class particle {
         background(10);
         if (mouseIsPressed && mouseButton == RIGHT) {
             this.reset(particleCount, particles)
+			// This removes the context menu, providing a clearer view on right click
+			document.oncontextmenu = function(){
+				return false
+			}
         }
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
