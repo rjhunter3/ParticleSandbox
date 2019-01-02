@@ -13,6 +13,36 @@
     </style>
     </head>
 <body>
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+        
+    </style>
+    <div class="footer">
+            <p>Controls:</p>
+            <table>
+                <tr>
+                <td>Number of Particles:</td>
+                <td>Velocity of Particles:</td>
+                <td>Particle Drag:</td>
+                <td>Mouse Threshold:</td>
+                <td>Default</td>
+                <td>Reset</td>
+                <tr>
+                <td><input type="tel" min="0" max="10000000" step="1" value="3000" id="particleCount" /></td>
+                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="mult" /></td>
+
+                </tr>
+
+            </table>
+    </div>
 </body>
 
 </html>
