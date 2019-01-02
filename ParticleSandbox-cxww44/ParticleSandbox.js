@@ -9,10 +9,11 @@ class particle {
         this.drag = random(0.98, 0.99);
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
-		this.mouseThresh = 300
-		this.mult = 0.001
-		this.time = new Date()
-		
+		this.mouseThresh = 300;
+		this.mult = 0.001;
+        this.time = new Date();
+        this.switch = false
+		this.name = 'Particle Diffusion';
     }
 	get timediff() {
 		let time2 = new Date()
@@ -30,8 +31,8 @@ class particle {
         this.vel.mult(this.drag);
         
         let mouseDist = dist(this.pos.x, this.pos.y, mouseX, mouseY);
-        
-        if (mouseIsPressed && mouseButton == LEFT) {
+        if (this.switch == true || (mouseIsPressed && mouseButton == CENTER)) {
+        //if (mouseIsPressed && mouseButton == LEFT) {
 			//let time2 = new Date()
 			//let timediff = time2 - this.time
 			// This provides a set time between left clicks to ensure clean switching between attract/repel
@@ -114,6 +115,7 @@ class particle {
         mouseY = -9999;
         
         background(10);
+
     }
     
 

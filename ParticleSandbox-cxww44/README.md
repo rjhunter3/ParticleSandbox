@@ -11,3 +11,7 @@ Licence used: Creative Commons Attribution ShareAlike 3.0 Unported (CC BY-SA 3.0
 This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 See LICENCE.md to view a full offline copy of the licence.
+
+Also code used from other libraries:
+p5.js Licenced under LGPL 2.1
+DAT.GUI Licenced under Apache 2.0
