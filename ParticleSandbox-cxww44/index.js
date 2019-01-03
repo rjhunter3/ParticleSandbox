@@ -7,12 +7,26 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     colorMode(HSB, 255);
     c = new particle(particleCount, particles, globalHue)
+    update()
     c.reset(particleCount, particles);
 
-    //var gui = new dat.GUI();
-    //gui.add(c, 'name');
-    //gui.add(c, 'switch');
+
 }
 function draw() {
     c.draw(particleCount, particles)
 }
+function revert() {
+    var particleCount = ("input#pCount").val()
+    c.reset(particleCount,particles)
+}
+function update() {
+    var changemult = document.getElementById("mult").value
+    var changedrag = document.getElementById("drag").value
+    var changethresh = document.getElementById("mouseThresh").value
+    c.setmult(changemult)
+    c.setdrag(changedrag)
+    c.setthresh(changethresh)
+}
+//document.getElementById("mult").addEventListener("Change",Update);
+//document.getElementById("drag").addEventListener("Change",Update);
+//document.getElementById("mouseThresh").addEventListener("Change",Update);

@@ -13,7 +13,8 @@ class particle {
 		this.mult = 0.001;
         this.time = new Date();
         this.switch = false
-		this.name = 'Particle Diffusion';
+        this.name = 'Particle Diffusion';
+        console.log(this.mult)
     }
 	get timediff() {
 		let time2 = new Date()
@@ -22,7 +23,18 @@ class particle {
 	}
 	set date(time1) {
 		this.time = time1
-	}
+    }
+    setmult(changemult) {
+        this.mult = changemult
+        console.log(this.mult)
+        return this.mult
+    }
+    setdrag(changedrag) {
+        this.drag = changedrag
+    }
+    setthresh(changethresh) {
+        this.mouseThresh = changethresh
+    }
 	
     move() {
         this.lastPos.x = this.pos.x;
@@ -37,7 +49,8 @@ class particle {
 			//let timediff = time2 - this.time
 			// This provides a set time between left clicks to ensure clean switching between attract/repel
             if (this.timediff > 1000){
-				this.mult *= -1;
+                this.mult *= -1;
+                console.log(this.mult)
 				this.date = new Date()
 			}
 		
@@ -57,7 +70,8 @@ class particle {
         this.vel.limit(6);
         this.pos.add(this.vel);
         this.acc.mult(0);
-            
+
+
         // Keep in bounds.
         if (this.pos.x < 0) {
             this.pos.x = width;

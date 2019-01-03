@@ -27,20 +27,23 @@
     </style>
     <div class="footer">
             <p>Controls:</p>
-            <table>
+            <table align="center">
                 <tr>
                 <td>Number of Particles:</td>
                 <td>Velocity of Particles:</td>
                 <td>Particle Drag:</td>
                 <td>Mouse Threshold:</td>
-                <td>Default</td>
-                <td>Reset</td>
+                <td>Default Settings:</td>
+                <td>Reset the Screen:</td>
                 <tr>
-                <td><input type="tel" min="0" max="10000000" step="1" value="3000" id="particleCount" /></td>
-                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="mult" /></td>
-
+                <td><input type="tel" min="0" max="10000" step="1" value="3000" id="pCount" onchange="revert()" /></td>
+                <td><input type="range" min="0" max="1" step = "0.001" value="0.001" id="mult" onchange="update()"/></td>
+                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="drag" onchange="update()"/></td>
+                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="mouseThresh" onchange="update()"/></td>
+                <td><button type="button" id="Default" onclick="revert()">Default</button></td>
+                <td><button type="button" id="Reset" onclick="revert()">Reset</button></td>
                 </tr>
-
+                    
             </table>
     </div>
 </body>
