@@ -1,6 +1,9 @@
 var particleCount = 3000;
 var particles = [];
 var globalHue;
+var changemult = 0.001;
+var changedrag;
+var changethresh;
 
 function setup() {
 
@@ -20,12 +23,12 @@ function revert() {
     c.reset(particleCount,particles)
 }
 function update() {
-    var changemult = document.getElementById("mult").value
+    changemult = document.getElementById("mult").value
     var changedrag = document.getElementById("drag").value
     var changethresh = document.getElementById("mouseThresh").value
-    c.setmult(changemult)
-    c.setdrag(changedrag)
-    c.setthresh(changethresh)
+    //c.setmult(changemult)
+    //c.setdrag(changedrag)
+    //c.setthresh(changethresh)
 }
 //document.getElementById("mult").addEventListener("Change",Update);
 //document.getElementById("drag").addEventListener("Change",Update);

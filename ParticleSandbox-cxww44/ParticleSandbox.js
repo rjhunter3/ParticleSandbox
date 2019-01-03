@@ -10,11 +10,11 @@ class particle {
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
 		this.mouseThresh = 300;
-		this.mult = 0.001;
+		//this.mult = 0.001;
         this.time = new Date();
         this.switch = false
         this.name = 'Particle Diffusion';
-        console.log(this.mult)
+
     }
 	get timediff() {
 		let time2 = new Date()
@@ -24,11 +24,11 @@ class particle {
 	set date(time1) {
 		this.time = time1
     }
-    setmult(changemult) {
-        this.mult = changemult
-        console.log(this.mult)
-        return this.mult
-    }
+    //setmult(changemult) {
+        //this.mult = changemult || 0.001
+        //console.log(this.mult)
+        
+    //}
     setdrag(changedrag) {
         this.drag = changedrag
     }
@@ -37,6 +37,10 @@ class particle {
     }
 	
     move() {
+
+        this.mult = changemult || 0.001
+
+
         this.lastPos.x = this.pos.x;
         this.lastPos.y = this.pos.y;
 
