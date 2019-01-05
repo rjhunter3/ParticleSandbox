@@ -24,6 +24,17 @@ function revert() {
     c.reset(particleCount,particles)
     console.log(particleCount)
 }
+function defreset() {
+    document.getElementById('pCount').value = 3000;
+    document.getElementById('mult').value = 0.001;
+    document.getElementById('drag').value = 6;
+    document.getElementById('mouseThresh').value = 300;
+    update()
+
+}
+function invert() {
+    changemult *= -1
+}
 function update() {
     changemult = document.getElementById("mult").value
     changedrag = document.getElementById("drag").value

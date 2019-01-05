@@ -10,9 +10,8 @@ class particle {
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
 		//this.mouseThresh = 300;
-		//this.mult = 0.001;
+		this.mult = 0.001;
         this.time = new Date();
-        this.switch = false
         this.name = 'Particle Diffusion';
 
     }
@@ -29,16 +28,10 @@ class particle {
         //console.log(this.mult)
         
     //}
-    setdrag(changedrag) {
-        this.drag = changedrag
-    }
-    setthresh(changethresh) {
-        this.mouseThresh = changethresh
-    }
 	
     move() {
 
-        this.mult = changemult || 0.001
+        this.mult = changemult || this.mult
 
         this.mouseThresh = changethresh || 300
 
@@ -51,14 +44,13 @@ class particle {
         this.vel.mult(this.drag);
         
         let mouseDist = dist(this.pos.x, this.pos.y, mouseX, mouseY);
-        if (this.switch == true || (mouseIsPressed && mouseButton == CENTER)) {
+        if (mouseIsPressed && mouseButton == CENTER) {
         //if (mouseIsPressed && mouseButton == LEFT) {
 			//let time2 = new Date()
 			//let timediff = time2 - this.time
 			// This provides a set time between left clicks to ensure clean switching between attract/repel
             if (this.timediff > 1000){
-                this.mult *= -1;
-                console.log(changedrag)
+                (changemult *= -1) || (this.mult *= -1);
 				this.date = new Date()
 			}
 		
@@ -128,6 +120,10 @@ class particle {
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
             p.move();
+
+            if (p.hue > 255){
+                p.hue = 0
+            }
                 
             stroke(p.hue, p.bright, 255);
                 
