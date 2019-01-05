@@ -4,6 +4,7 @@ var globalHue;
 var changemult = 0.001;
 var changedrag = 6
 var changethresh = 300;
+var changehue = 1;
 
 function setup() {
 
@@ -29,6 +30,7 @@ function defreset() {
     document.getElementById('mult').value = 0.001;
     document.getElementById('drag').value = 6;
     document.getElementById('mouseThresh').value = 300;
+    document.getElementById('hueChange').value = 1;
     update()
 
 }
@@ -39,7 +41,8 @@ function update() {
     changemult = document.getElementById("mult").value
     changedrag = document.getElementById("drag").value
     changethresh = document.getElementById("mouseThresh").value
-    console.log(changedrag)
+    changehue = document.getElementById("hueChange").value
+    console.log(changehue)
     //c.setmult(changemult)
     //c.setdrag(changedrag)
     //c.setthresh(changethresh)

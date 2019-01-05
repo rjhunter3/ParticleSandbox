@@ -37,6 +37,8 @@ class particle {
 
         this.limit = parseInt(changedrag) || 6
 
+        this.hueinc = parseInt(changehue) || 0
+
 
         this.lastPos.x = this.pos.x;
         this.lastPos.y = this.pos.y;
@@ -69,7 +71,7 @@ class particle {
           push.mult((this.mouseThresh - mouseDist) * this.mult);
           this.acc.add(push);
 
-          this.hue += 1
+          this.hue += this.hueinc
           //if (this.hue = 255) {
                 //this.hue -= 250
             //}
