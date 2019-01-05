@@ -35,9 +35,16 @@ class particle {
 
         this.mouseThresh = changethresh || 300
 
-        this.limit = parseInt(changedrag) || 6
+        this.limit = changedrag || 0
 
-        this.hueinc = parseInt(changehue) || 0
+        this.hueinc = changehue || 0
+
+        //if (this.limit == Number(0)){
+            //if (!(changethresh)){
+                //this.limit = 6
+                //console.log(this.limit)
+            //}
+        //}
 
 
         this.lastPos.x = this.pos.x;
