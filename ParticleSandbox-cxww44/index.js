@@ -19,8 +19,10 @@ function draw() {
     c.draw(particleCount, particles)
 }
 function revert() {
-    var particleCount = ("input#pCount").val()
+    particleCount = document.getElementById("pCount").value
+    particles = []
     c.reset(particleCount,particles)
+    console.log(particleCount)
 }
 function update() {
     changemult = document.getElementById("mult").value

@@ -27,7 +27,7 @@
     </style>
     <div class="footer">
             <p>Controls:</p>
-            <table align="center">
+            <table align ="center">
                 <tr>
                 <td>Number of Particles:</td>
                 <td>Acceleration:</td>
@@ -35,15 +35,15 @@
                 <td>Mouse Threshold:</td>
                 <td>   Invert:   </td>
                 <td>Default Settings:</td>
-                <td>Reset the Screen:</td>
+                <td>Clear the Screen:</td>
                 <tr>
-                <td><input type="tel" min="0" max="10000" step="1" value="3000" id="pCount" onchange="revert()" /></td>
+                <td><input type="number" min="0" max="10000" step="1" value="3000" id="pCount" oninput="revert()" /></td>
                 <td><input type="range" min="0" max="0.010" step = "0.001" value="0.001" id="mult" onchange="update()"/></td>
                 <td><input type="range" min="0" max="10" step = "1" value="6" id="drag" onchange="update()"/></td>
                 <td><input type="range" min="0" max="600" step = "50" value="300" id="mouseThresh" onchange="update()"/></td>
                 <td><button type="button" id="Invert" onclick="revert()">Invert</button></td>
-                <td><button type="button" id="Default" onclick="revert()">Default</button></td>
-                <td><button type="button" id="Reset" onclick="revert()">Reset</button></td>
+                <td><button type="reset" value="Default">Default</button></td>
+                <td><button type="button" id="Clear" onclick="revert()">Clear</button></td>
                 </tr>
                     
             </table>

@@ -64,7 +64,9 @@ class particle {
 		
 			
         }
-            
+        
+        
+
         if (mouseDist < this.mouseThresh) {
           let push = new p5.Vector(this.pos.x, this.pos.y);
           push.sub(new p5.Vector(mouseX, mouseY));
@@ -73,7 +75,19 @@ class particle {
           this.acc.add(push);
 
           this.hue += 1
-        }
+          //if (this.hue = 255) {
+                //this.hue -= 250
+            //}
+          //}
+          //else {
+            //this.hue -= 1
+            //if (this.hue = 0) {
+                //this.changehue = true
+            //}
+            //console.log(this.hue)
+          }
+          
+        
             
         // Move it.
 
