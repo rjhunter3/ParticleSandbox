@@ -44,18 +44,21 @@ class particle {
         this.vel.mult(this.drag);
         
         let mouseDist = dist(this.pos.x, this.pos.y, mouseX, mouseY);
-        if (mouseIsPressed && mouseButton == CENTER) {
+        //if (mouseIsPressed && mouseButton == CENTER) {
         //if (mouseIsPressed && mouseButton == LEFT) {
 			//let time2 = new Date()
 			//let timediff = time2 - this.time
-			// This provides a set time between left clicks to ensure clean switching between attract/repel
-            if (this.timediff > 1000){
-                (changemult *= -1) || (this.mult *= -1);
-				this.date = new Date()
-			}
-		
-			
-        }
+			// This provides a set time between clicks to ensure clean switching between attract/repel
+            //if (this.timediff > 1000){
+                //try{
+                    //changemult *= -1
+                //}
+                //catch{
+                    //this.mult *= -1
+                //}
+                //this.date = new Date()
+			//}	
+        //}
         
         
 
@@ -117,6 +120,22 @@ class particle {
 				return false
 			}
         }
+        if (mouseIsPressed && mouseButton == CENTER) {
+            //if (mouseIsPressed && mouseButton == LEFT) {
+                //let time2 = new Date()
+                //let timediff = time2 - this.time
+                // This provides a set time between clicks to ensure clean switching between attract/repel
+                if (this.timediff > 1000){
+                    try{
+                        changemult *= -1
+                    }
+                    catch{
+                        this.mult *= -1
+                    }
+                    this.date = new Date()
+                }	
+            }
+
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
             p.move();
@@ -140,7 +159,6 @@ class particle {
     }
     reset(particleCount, particles) {
         globalHue = random(255);
-        
         particles.splice(0, particles.length);
         
         for (let i = 0; i < particleCount; i++) {
