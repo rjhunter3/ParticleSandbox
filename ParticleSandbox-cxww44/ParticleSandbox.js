@@ -9,7 +9,7 @@ class particle {
         this.drag = random(0.98, 0.99);
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
-		this.mouseThresh = 300;
+		//this.mouseThresh = 300;
 		//this.mult = 0.001;
         this.time = new Date();
         this.switch = false
@@ -40,6 +40,10 @@ class particle {
 
         this.mult = changemult || 0.001
 
+        this.mouseThresh = changethresh || 300
+
+        this.limit = parseInt(changedrag) || 6
+
 
         this.lastPos.x = this.pos.x;
         this.lastPos.y = this.pos.y;
@@ -54,7 +58,7 @@ class particle {
 			// This provides a set time between left clicks to ensure clean switching between attract/repel
             if (this.timediff > 1000){
                 this.mult *= -1;
-                console.log(this.mult)
+                console.log(changedrag)
 				this.date = new Date()
 			}
 		
@@ -67,11 +71,16 @@ class particle {
           push.normalize();
           push.mult((this.mouseThresh - mouseDist) * this.mult);
           this.acc.add(push);
+
+          this.hue += 1
         }
             
         // Move it.
+
+        
+
         this.vel.add(this.acc);
-        this.vel.limit(6);
+        this.vel.limit(this.limit);
         this.pos.add(this.vel);
         this.acc.mult(0);
 

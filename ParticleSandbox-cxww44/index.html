@@ -5,7 +5,7 @@
     <script src="ParticleSandbox.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js" type="text/javascript"></script>
+    
     
     <style type="text/css">
         body {margin:0; padding:0;} /* remove top and left whitespace */
@@ -30,8 +30,8 @@
             <table align="center">
                 <tr>
                 <td>Number of Particles:</td>
-                <td>Initial Velocity:</td>
-                <td>Particle Drag:</td>
+                <td>Acceleration:</td>
+                <td>Speed Limit:</td>
                 <td>Mouse Threshold:</td>
                 <td>   Invert:   </td>
                 <td>Default Settings:</td>
@@ -39,8 +39,8 @@
                 <tr>
                 <td><input type="tel" min="0" max="10000" step="1" value="3000" id="pCount" onchange="revert()" /></td>
                 <td><input type="range" min="0" max="0.010" step = "0.001" value="0.001" id="mult" onchange="update()"/></td>
-                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="drag" onchange="update()"/></td>
-                <td><input type="range" min="0" max="1" step = "0.001" value="1" id="mouseThresh" onchange="update()"/></td>
+                <td><input type="range" min="0" max="10" step = "1" value="6" id="drag" onchange="update()"/></td>
+                <td><input type="range" min="0" max="600" step = "50" value="300" id="mouseThresh" onchange="update()"/></td>
                 <td><button type="button" id="Invert" onclick="revert()">Invert</button></td>
                 <td><button type="button" id="Default" onclick="revert()">Default</button></td>
                 <td><button type="button" id="Reset" onclick="revert()">Reset</button></td>
