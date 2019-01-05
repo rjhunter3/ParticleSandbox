@@ -1,10 +1,11 @@
 var particleCount = 3000;
 var particles = [];
 var globalHue;
-var changemult = 0.001;
-var changedrag = 6;
-var changethresh = 300;
-var changehue = 1;
+var setmult = 0.001;
+var setdrag = 6;
+var setthresh = 300;
+var sethue = 1;
+var set = false
 
 function setup() {
 
@@ -17,7 +18,7 @@ function setup() {
 
 }
 function draw() {
-    c.draw(particleCount, particles)
+    c.draw(particleCount, particles, set)
 }
 function revert() {
     particleCount = document.getElementById("pCount").value
@@ -35,16 +36,17 @@ function defreset() {
 
 }
 function invert() {
-    changemult *= -1
+    setmult *= -1
 }
 function update() {
-    changemult = document.getElementById("mult").value
-    changedrag = document.getElementById("drag").value
-    changethresh = document.getElementById("mouseThresh").value
-    changehue = document.getElementById("hueChange").value
-    changedrag = parseInt(changedrag)
-    changehue = parseInt(changehue)
-    console.log(changethresh)
+    setmult = document.getElementById("mult").value
+    setdrag = document.getElementById("drag").value
+    setthresh = document.getElementById("mouseThresh").value
+    sethue = document.getElementById("hueChange").value
+    setdrag = parseInt(setdrag)
+    sethue = parseInt(sethue)
+    console.log(setthresh)
+    set = true
     //c.setmult(changemult)
     //c.setdrag(changedrag)
     //c.setthresh(changethresh)

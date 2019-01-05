@@ -9,10 +9,13 @@ class particle {
         this.drag = random(0.98, 0.99);
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
-		//this.mouseThresh = 300;
-		this.mult = 0.001;
+		this.mouseThresh = 300;
+        this.mult = 0.001;
+        this.limit = 6
+        this.hueinc = 1
         this.time = new Date();
         this.name = 'Particle Diffusion';
+        this.setcheck = false
 
     }
 	get timediff() {
@@ -28,16 +31,25 @@ class particle {
         //console.log(this.mult)
         
     //}
+    setvals(){
+        this.mult = setmult || this.mult
+
+        this.mouseThresh = setthresh || 300
+
+        this.limit = setdrag || 0
+
+        this.hueinc = sethue || 0
+    }
 	
     move() {
 
-        this.mult = changemult || this.mult
+        //this.mult = changemult || this.mult
 
-        this.mouseThresh = changethresh || 300
+        //this.mouseThresh = changethresh || 300
 
-        this.limit = changedrag || 0
+        //this.limit = changedrag || 0
 
-        this.hueinc = changehue || 0
+        //this.hueinc = changehue || 0
 
         //if (this.limit == Number(0)){
             //if (!(changethresh)){
@@ -120,7 +132,10 @@ class particle {
             this.lastPos.y = 0;
         }
     }
-    draw(particleCount, particles) {
+
+
+
+    draw(particleCount, particles, set) {
         background(10);
         if (mouseIsPressed && mouseButton == RIGHT) {
             this.reset(particleCount, particles)
@@ -136,7 +151,7 @@ class particle {
                 // This provides a set time between clicks to ensure clean switching between attract/repel
                 if (this.timediff > 1000){
                     try{
-                        changemult *= -1
+                        setmult *= -1
                     }
                     catch{
                         this.mult *= -1
@@ -152,6 +167,10 @@ class particle {
             if (p.hue > 255){
                 p.hue = 0
             }
+
+            if (set == true){
+                p.setvals()
+            }
                 
             stroke(p.hue, p.bright, 255);
                 
@@ -162,7 +181,8 @@ class particle {
             newPos.add(p.pos);
                 
             line(newPos.x, newPos.y, p.pos.x, p.pos.y);
-    } 
+    }
+            set = false 
     
             
     }
