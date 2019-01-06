@@ -24,4 +24,23 @@ Included with this documentation are the following files:
 - Folder containing a copy of the original code and files created by Jason Labbe downloaded directly from [OpenProcessing](https://www.openprocessing.org/sketch/605835)
 - LICENCE.MD containing a full offline copy of the licence of this distribution
 - ParticleSandbox.js containing the class definition
-- index.html and index.js containing HTML and javascript to set up the example page and provide form controls to interact with ParticleSandbox.js, providing the opportunity to explore some of the properties of the class.
+- index.html and index.js containing HTML and javascript to set up the example page and provide form controls
+
+## Controls and Features
+
+- The example HTML page provides form controls to change values of variables
+- Alike the original, right click resets the screen 
+- Middle mouse button toggles between attract/repel, but there's no need to hold middle mouse button as in the original.
+- Deviating from the original, moving particles now change hue, the speed of which can be determined by the user in the HTML form controls.
+
+## Explanation - ParticleSandbox.js
+
+Note - See code comments for step-by-step explanation of the code
+
+### `constructor(x,y)`
+
+This provides means to set up the particle class with parameters `x` and `y` denoting the x position and y position of the particle on the user's screen respectively. In additon to using these x and y parameters to setup vectors, to properties such as `this.pos` and `this.vel`, other properties are setup with their default values, including the properties which the user can go on to change with the form controls in the example, `this.mult`, `this.limit`, `this.mousethresh1` and `this.hueinc`.
+
+### `get timediff()` and `set date(time1)`
+
+Both of these get and set methods involve setting up a `timediff` variable in the get method which determines the time between two actions. Through the use of the seperate set method, which sets the property `this.time` to be updated with the past time when an action occurred, and the get method, which calculates the difference between this set time and the current time, such time differneces can be established. This was needed in this example, as using the centre mouse click to toggle the attract/repel feature in particles in quick succession proved problematic and this sets a 1 second window between changes.
