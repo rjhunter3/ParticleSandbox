@@ -14,4 +14,3 @@ See LICENCE.md to view a full offline copy of the licence.
 
 Also code used from other libraries:
 p5.js Licenced under LGPL 2.1
-DAT.GUI Licenced under Apache 2.0
