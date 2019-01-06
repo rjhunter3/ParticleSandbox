@@ -1,6 +1,18 @@
+/*
+    Contains class definition used in the Particle Sandbox sketch adapted from OpenProcessing
+    
+    Original Author:
+    Jason Labbe (jasonlabbe3d.com)
+    
+    This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. 
+    To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ 
+    or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
+    (See README.MD for full documentation)
+*/
 class particle {
     constructor (x,y) {
+        // Some key properties are assigned giving the particle a position, velocity and hue
         this.lastPos = new p5.Vector(x, y);
         this.pos = new p5.Vector(x, y);
         this.vel = new p5.Vector(0, 0);
@@ -9,198 +21,131 @@ class particle {
         this.drag = random(0.98, 0.99);
         this.hue = (globalHue + random(-40, 40)) % 255;
         this.bright = random(255);
-		this.mouseThresh = 300;
-        this.mult = 0.001;
-        this.limit = 6
-        this.hueinc = 1
         this.time = new Date();
-        this.name = 'Particle Diffusion';
-        this.setcheck = false
-
+        // Default values are provided for properties which can be further changed by the user
+        this.mouseThresh = 300;
+        this.mult = 0.001;
+        this.limit = 6;
+        this.hueinc = 1;
     }
-	get timediff() {
-		let time2 = new Date()
-		let timediff = time2 - this.time
-		return timediff
+    // Get and set methods here handle measuring the time between two actions
+    get timediff() {
+        let time2 = new Date();
+        let timediff = time2 - this.time;
+        return timediff;
 	}
-	set date(time1) {
-		this.time = time1
+    set date(time1) {
+        this.time = time1;
     }
-    //setmult(changemult) {
-        //this.mult = changemult || 0.001
-        //console.log(this.mult)
-        
-    //}
+    // A set method with the job of updating multiple variables when the user changes values of an input
     setvals(){
-        this.mult = setmult || this.mult
-
-        this.mouseThresh = setthresh || 300
-
-        this.limit = setdrag || 0
-
-        this.hueinc = sethue || 0
+        this.mult = setmult || this.mult;
+        this.mouseThresh = setthresh || this.mouseThresh;
+        // Secondary values set as zero as variable inputs of zero are interpreted as 'falsy'
+        this.limit = setdrag || 0;
+        this.hueinc = sethue || 0;
     }
-	
+	// Move method calculates the movement of each particle, on interaction with the mouse.
     move() {
-
-        //this.mult = changemult || this.mult
-
-        //this.mouseThresh = changethresh || 300
-
-        //this.limit = changedrag || 0
-
-        //this.hueinc = changehue || 0
-
-        //if (this.limit == Number(0)){
-            //if (!(changethresh)){
-                //this.limit = 6
-                //console.log(this.limit)
-            //}
-        //}
-
-
+        // Sets last position equal to current position
         this.lastPos.x = this.pos.x;
         this.lastPos.y = this.pos.y;
-
         this.vel.mult(this.drag);
-        
+        // Calculates distance between particle and mouse cursor
         let mouseDist = dist(this.pos.x, this.pos.y, mouseX, mouseY);
-        //if (mouseIsPressed && mouseButton == CENTER) {
-        //if (mouseIsPressed && mouseButton == LEFT) {
-			//let time2 = new Date()
-			//let timediff = time2 - this.time
-			// This provides a set time between clicks to ensure clean switching between attract/repel
-            //if (this.timediff > 1000){
-                //try{
-                    //changemult *= -1
-                //}
-                //catch{
-                    //this.mult *= -1
-                //}
-                //this.date = new Date()
-			//}	
-        //}
-        
-        
-
+        // Tests to see if the particle is close enough to the cursor to be affected (uses this.mouseThresh)
         if (mouseDist < this.mouseThresh) {
-          let push = new p5.Vector(this.pos.x, this.pos.y);
-          push.sub(new p5.Vector(mouseX, mouseY));
-          push.normalize();
-          push.mult((this.mouseThresh - mouseDist) * this.mult);
-          this.acc.add(push);
-
-          this.hue += this.hueinc
-          //if (this.hue = 255) {
-                //this.hue -= 250
-            //}
-          //}
-          //else {
-            //this.hue -= 1
-            //if (this.hue = 0) {
-                //this.changehue = true
-            //}
-            //console.log(this.hue)
-          }
-          
-        
-            
-        // Move it.
-
-        
-
+            let push = new p5.Vector(this.pos.x, this.pos.y);
+            push.sub(new p5.Vector(mouseX, mouseY));
+            push.normalize();
+            push.mult((this.mouseThresh - mouseDist) * this.mult);
+            this.acc.add(push);
+            // Increments the hue value (by this.hueinc)
+            this.hue += this.hueinc;
+        } 
+        // Calculates the velocity and limits it to a set value (this.limit)
         this.vel.add(this.acc);
         this.vel.limit(this.limit);
         this.pos.add(this.vel);
         this.acc.mult(0);
-
-
-        // Keep in bounds.
+        // Keeps the particle in bounds on the screen (if it goes off one side it appears on the other)
         if (this.pos.x < 0) {
             this.pos.x = width;
             this.lastPos.x = width;
-        } else if (this.pos.x > width) {
+        } 
+        else if (this.pos.x > width) {
             this.pos.x = 0;
             this.lastPos.x = 0;
-        }
-            
+        }    
         if (this.pos.y < 0) {
             this.pos.y = height;
             this.lastPos.y = height;
-        } else if (this.pos.y > height) {
+        } 
+        else if (this.pos.y > height) {
             this.pos.y = 0;
             this.lastPos.y = 0;
         }
     }
-
-
-
+    // Draw method involves code to test mouse inputs and move individual particles
     draw(particleCount, particles, set) {
         background(10);
+        // Tests for right click, which resets the screen
         if (mouseIsPressed && mouseButton == RIGHT) {
-            this.reset(particleCount, particles)
-			// This removes the context menu, providing a clearer view on right click
-			document.oncontextmenu = function(){
-				return false
-			}
+            this.reset(particleCount, particles);
+            // This removes the context menu, providing a clearer view on right click
+            document.oncontextmenu = function(){
+                return false;
+            }  
         }
+        // Tests for centre click, which toggles attract/repel
         if (mouseIsPressed && mouseButton == CENTER) {
-            //if (mouseIsPressed && mouseButton == LEFT) {
-                //let time2 = new Date()
-                //let timediff = time2 - this.time
-                // This provides a set time between clicks to ensure clean switching between attract/repel
-                if (this.timediff > 1000){
-                    try{
-                        setmult *= -1
-                    }
-                    catch{
-                        this.mult *= -1
-                    }
-                    this.date = new Date()
-                }	
-            }
-
+            // This provides a set time (1 sec) between clicks to ensure clean switching for all particles
+            if (this.timediff > 1000){
+                try{
+                    setmult *= -1;
+                }
+                catch{
+                    this.mult *= -1;
+                }
+                this.date = new Date();
+            }	
+        }
+        // For loop provides calculation for each of the particles
         for (let i = 0; i < particles.length; i++) {
             let p = particles[i];
+            // Runs move method for each particle
             p.move();
-
+            // Resets hue to zero to keep the colours changing
             if (p.hue > 255){
-                p.hue = 0
+                p.hue = 0;
             }
-
+            // This tests for changes in any live contols, running setvals method if so
             if (set == true){
-                p.setvals()
+                p.setvals();
             }
-                
             stroke(p.hue, p.bright, 255);
-                
-            // Exaggerate vector from lastPos to pos.
+            // Exaggerates vector from lastPos to pos.
             let newPos = p.pos.copy();
             newPos.sub(p.lastPos);
             newPos.mult(15);
             newPos.add(p.pos);
-                
             line(newPos.x, newPos.y, p.pos.x, p.pos.y);
+        }
+        // Ensures that the set variable is correctly reset to false
+        set = false;
     }
-            set = false 
-    
-            
-    }
+    // Reset method runs on setup or reset of the screen, involves setting up the particles
     reset(particleCount, particles) {
+        // Determines the global hue at random
         globalHue = random(255);
         particles.splice(0, particles.length);
-        
+        // Distributes a defined number of particles at random on the screen
         for (let i = 0; i < particleCount; i++) {
             particles.push(new particle(random(width), random(height)));
         }
-        
-        // Make sure mouse doesn't immediately affect particles.
+        // Make sure that the mouse doesn't immediately affect particles
         mouseX = -9999;
         mouseY = -9999;
-        
         background(10);
-
     }
-    
-
 }
