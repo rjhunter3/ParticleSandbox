@@ -24,5 +24,4 @@ Included with this documentation are the following files:
 - Folder containing a copy of the original code and files created by Jason Labbe downloaded directly from [OpenProcessing](https://www.openprocessing.org/sketch/605835)
 - LICENCE.MD containing a full offline copy of the licence of this distribution
 - ParticleSandbox.js containing the class definition
-- index.html and index.js containing HTML and javascript to set up the example page and provide controls to interact with ParticleSandbox.js
-and play around with some of the properties of the class.
+- index.html and index.js containing HTML and javascript to set up the example page and provide form controls to interact with ParticleSandbox.js, providing the opportunity to explore some of the properties of the class.
