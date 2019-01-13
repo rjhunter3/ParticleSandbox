@@ -33,7 +33,7 @@ class particle {
         let time2 = new Date();
         let timediff = time2 - this.time;
         return timediff;
-	}
+    }
     set date(time1) {
         this.time = time1;
     }
@@ -45,7 +45,7 @@ class particle {
         this.limit = setdrag || 0;
         this.hueinc = sethue || 0;
     }
-	// Move method calculates the movement of each particle, on interaction with the mouse.
+    // Move method calculates the movement of each particle, on interaction with the mouse.
     move() {
         // Sets last position equal to current position
         this.lastPos.x = this.pos.x;
@@ -95,7 +95,7 @@ class particle {
             // This removes the context menu, providing a clearer view on right click
             document.oncontextmenu = function(){
                 return false;
-            }  
+            };  
         }
         // Tests for centre click, which toggles attract/repel
         if (mouseIsPressed && mouseButton == CENTER) {
@@ -104,7 +104,7 @@ class particle {
                 try{
                     setmult *= -1;
                 }
-                catch{
+                catch(error){
                     this.mult *= -1;
                 }
                 this.date = new Date();

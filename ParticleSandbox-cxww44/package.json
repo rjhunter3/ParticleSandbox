@@ -1,0 +1,22 @@
+{
+  "name": "particle-sandbox",
+  "version": "1.0.0",
+  "description": "JS sketch and HTML example page with form controls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjhunter3/ProgAssignment1.git"
+  },
+  "author": "",
+  "license": "CC-BY-SA-3.0",
+  "bugs": {
+    "url": "https://github.com/rjhunter3/ProgAssignment1/issues"
+  },
+  "homepage": "https://github.com/rjhunter3/ProgAssignment1#readme",
+  "devDependencies": {
+    "eslint-config-p5js": "^1.0.1"
+  }
+}

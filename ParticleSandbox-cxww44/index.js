@@ -27,7 +27,7 @@ function draw() {
 }
 // Revert function resets the screen and sets particleCount to the value defined by the user
 function revert() {
-    particleCount = document.getElementById("pCount").value;
+    particleCount = document.getElementById('pCount').value;
     particles = [];
     c.reset(particleCount,particles);
 }
@@ -46,10 +46,10 @@ function invert() {
 }
 // Update function updates the variables with the user's values in the onscreen setting on the page
 function update() {
-    setmult = document.getElementById("mult").value;
-    setdrag = document.getElementById("drag").value;
-    setthresh = document.getElementById("mouseThresh").value;
-    sethue = document.getElementById("hueChange").value;
+    setmult = document.getElementById('mult').value;
+    setdrag = document.getElementById('drag').value;
+    setthresh = document.getElementById('mouseThresh').value;
+    sethue = document.getElementById('hueChange').value;
     setdrag = parseInt(setdrag);
     sethue = parseInt(sethue);
     set = true;
