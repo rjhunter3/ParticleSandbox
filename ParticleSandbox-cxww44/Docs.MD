@@ -60,3 +60,41 @@ This method involves calculation for each particle and tests for some mouse inpu
 ### `reset()`
 
 This method runs on setup or reset of the sketch, and involves setting up the screen. The global hue is determined at random, and multiple particles, the number of which determined by `particleCount`, are created and placed on the screen.
+
+## Explanation - Example page
+
+Note - See code comments for step-by-step explanation of the code
+
+The example page constructed uses index.html and index.js to provide form controls and manage interaction of the sketch with the JS DOM. The page contains the Particle Sandbox sketch and an inobtrusive control panel containing 8 form controls:
+
+### Number of Particles
+
+This input is fairly self-explanatory, when this value is changed by the user, the sketch resets with the new amount of particles. The maximum amount of particles avaliable is 10000, however, for many users this can be slow due to hardware limitations. The default value is therefore 3000, the same as the original sketch, and for users with less powerful machines it is recommended to lower this value if excessive lag is experienced, in order to fully enjoy the sketch.
+
+### Acceleration
+
+This slider input changes how fast the particles react to the mouse input, and attain their maximum speed. 
+
+### Speed Limit
+
+This slider input alters the limit on the speed which the particles can achieve.
+
+### Mouse Threshold
+
+This slider input limits size of the area of particles affected by the presence of the mouse cursor.
+
+### Hue Rate of Change
+
+This slider input alters the rate at which the hue of the particles affected by the presence of the mouse changes. Note that this feature can be turned off altogether by dragging the slider to its leftmost value.
+
+### Invert
+
+Toggles between the attract/repel effects of the presence of the mouse. Note that the middle mouse click also performs this same function.
+
+### Default
+
+Resets all form controls to their default values, most of these default values are the same as in the original sketch, with the exception of the hue rate of change as this is a completely new feature.
+
+### Clear Screen
+
+Quite self-explanatory. This clears the screen, with the clear sketch retaining the slider values and particle count given.
