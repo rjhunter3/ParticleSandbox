@@ -87,7 +87,7 @@ class particle {
         }
     }
     // Draw method involves code to test mouse inputs and move individual particles
-    draw(particleCount, particles, set) {
+    draw(particleCount = 3000, particles, set = false) {
         background(10);
         // Tests for right click, which resets the screen
         if (mouseIsPressed && mouseButton == RIGHT) {
@@ -135,7 +135,7 @@ class particle {
         set = false;
     }
     // Reset method runs on setup or reset of the screen, involves setting up the particles
-    reset(particleCount, particles) {
+    reset(particleCount = 3000, particles = []) {
         // Determines the global hue at random
         globalHue = random(255);
         particles.splice(0, particles.length);
@@ -143,7 +143,7 @@ class particle {
         for (let i = 0; i < particleCount; i++) {
             particles.push(new particle(random(width), random(height)));
         }
-        // Make sure that the mouse doesn't immediately affect particles
+        // Makes sure that the mouse doesn't immediately affect particles
         mouseX = -9999;
         mouseY = -9999;
         background(10);
