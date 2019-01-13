@@ -115,4 +115,4 @@ Eslint was ran with files index.js and ParticleSandbox.js under the following:
     ? Do you require semicolons? Yes
     ? What format do you want your config file to be in? JavaScript
    
-In addition to these, to ensure that the p5js syntax does not cause problems and return errors, [eslint-config-p5js] (https://www.npmjs.com/package/eslint-config-p5js?fbclid=IwAR2jkfJLbr5icxBIWWvRX7ieQFMmhXhbgUVCURbHFV1GT40bja-miZWFdoI) was installed as an npm package.
+In addition to these, to ensure that the p5js syntax does not cause problems and return errors, [eslint-config-p5js](https://www.npmjs.com/package/eslint-config-p5js?fbclid=IwAR2jkfJLbr5icxBIWWvRX7ieQFMmhXhbgUVCURbHFV1GT40bja-miZWFdoI) was installed as an npm package.
