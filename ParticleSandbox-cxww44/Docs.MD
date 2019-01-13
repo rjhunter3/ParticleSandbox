@@ -98,3 +98,21 @@ Resets all form controls to their default values, most of these default values a
 ### Clear Screen
 
 Quite self-explanatory. This clears the screen, with the clear sketch retaining the slider values and particle count given.
+
+## Eslint
+
+Eslint was ran with files index.js and ParticleSandbox.js under the following:
+
+    ? How would you like to configure ESLint? Answer questions about your style
+    ? Which version of ECMAScript do you use? ES2015
+    ? Are you using ES6 modules? No
+    ? Where will your code run? Browser
+    ? Do you use CommonJS? No
+    ? Do you use JSX? No
+    ? What style of indentation do you use? Spaces
+    ? What quotes do you use for strings? Single
+    ? What line endings do you use? Unix
+    ? Do you require semicolons? Yes
+    ? What format do you want your config file to be in? JavaScript
+   
+In addition to these, to ensure that the p5js syntax does not cause problems and return errors, [eslint-config-p5js] (https://www.npmjs.com/package/eslint-config-p5js?fbclid=IwAR2jkfJLbr5icxBIWWvRX7ieQFMmhXhbgUVCURbHFV1GT40bja-miZWFdoI) was installed as an npm package.
