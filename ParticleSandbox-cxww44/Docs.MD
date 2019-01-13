@@ -44,3 +44,19 @@ This provides means to set up the particle class with parameters `x` and `y` den
 ### `get timediff()` and `set date(time1)`
 
 Both of these get and set methods involve setting up a `timediff` variable in the get method which determines the time between two actions. Through the use of the seperate set method, which sets the property `this.time` to be updated with the past time when an action occurred, and the get method, which calculates the difference between this set time and the current time, such time differneces can be established. This was needed in this example, as using the centre mouse click to toggle the attract/repel feature in particles in quick succession proved problematic and this sets a 1 second window between changes.
+
+### `setvals()`
+
+This set method updates all changeable properties, `this.mult`, `this.mouseThresh`, `this.limit` and `this.hueinc` when a change is made by the user from the HTML page, by grouping all variables together in a single set method, space is saved. For two of these variables, zero is given as secondary inputs to prevent possible errors when primary inputs have been interpreted as 'falsey' by JS.
+
+### `move()`
+
+This method concerns the calculation of the movement of each particle, and involves interpreting the user's interaction with the mouse. Initially, the position of the particle is calibrated and the distance from the particle and the mouse cursor determined. Then, the changeable property `this.mouseThresh` is used to determine if the particle lies within the area within which it can be interacted with and moved. Also, if the particle does indeed lie within this area, this code increments the hue value of the particle through the changeable property `this.hueinc`. After this, the velocity is calculated and limited by the changeable proprty `this.limit`, and the particle is kept in the screen bounds, so that is it is kept on the screen.
+
+### `draw()`
+
+This method involves calculation for each particle and tests for some mouse inputs. Initially, a test for right click is performed, if a right click is detected the screen is reset. Then a test for centre mouse click is performed, if this return true, the effect of the mouse cursor on the particles is toggled between 'attract' and 'repel', in order to solve an issue deriving from multiple middle clicks in quick succession, the time difference get and set methods are used here to ensure that at least one second has passed between successive middle clicks (if this were not the case, it was possible for some particles to attract and some others to repel). Next, for each of the particles, the `move()` method is called and a test for changes in the controls is performed, linking to the `setvals()` method if a change is indeed detected.
+
+### `reset()`
+
+This method runs on setup or reset of the sketch, and involves setting up the screen. The global hue is determined at random, and multiple particles, the number of which determined by `particleCount`, are created and placed on the screen.
