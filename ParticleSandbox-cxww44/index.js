@@ -7,10 +7,10 @@
 var particleCount = 3000;
 var particles = [];
 var globalHue;
-var setmult = 0.001;
-var setdrag = 6;
-var setthresh = 300;
-var sethue = 3;
+var mult = 0.001;
+var drag = 6;
+var thresh = 300;
+var hue = 3;
 var set = false;
 // Setup function initialises the canvas and sets up a new particle object
 function setup() {
@@ -42,15 +42,15 @@ function defreset() {
 }
 // Invert function toggles between attract/repel 
 function invert() {
-    setmult *= -1;
+    mult *= -1;
 }
 // Update function updates the variables with the user's values in the onscreen setting on the page
 function update() {
-    setmult = document.getElementById('mult').value;
-    setdrag = document.getElementById('drag').value;
-    setthresh = document.getElementById('mouseThresh').value;
-    sethue = document.getElementById('hueChange').value;
-    setdrag = parseInt(setdrag);
-    sethue = parseInt(sethue);
+    mult = document.getElementById('mult').value;
+    drag = document.getElementById('drag').value;
+    thresh = document.getElementById('mouseThresh').value;
+    hue = document.getElementById('hueChange').value;
+    drag = parseInt(drag);
+    hue = parseInt(hue);
     set = true;
 }

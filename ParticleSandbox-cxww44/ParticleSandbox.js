@@ -37,13 +37,30 @@ class particle {
     set date(time1) {
         this.time = time1;
     }
-    // A set method with the job of updating multiple variables when the user changes values of an input
-    setvals(){
-        this.mult = setmult || this.mult;
-        this.mouseThresh = setthresh || this.mouseThresh;
-        // Secondary values set as zero as variable inputs of zero are interpreted as 'falsy'
-        this.limit = setdrag || 0;
-        this.hueinc = sethue || 0;
+    // Get and set methods for changeable properties:
+    getMult() {
+        return this.mult;
+    }
+    getThresh() {
+        return this.mouseThresh;
+    }
+    getLimit() {
+        return this.limit;
+    }
+    getHueinc() {
+        return this.hueinc;
+    }
+    setMult(mult) {
+        this.mult = mult || this.mult;
+    }
+    setThresh(thresh) {
+        this.mouseThresh = thresh || this.mouseThresh;
+    }
+    setLimit(drag) {
+        this.limit = drag || 0;
+    }
+    setHueinc(hue) {
+        this.hueinc = hue || 0;
     }
     // Move method calculates the movement of each particle, on interaction with the mouse.
     move() {
@@ -102,7 +119,7 @@ class particle {
             // This provides a set time (1 sec) between clicks to ensure clean switching for all particles
             if (this.timediff > 1000){
                 try{
-                    setmult *= -1;
+                    mult *= -1;
                 }
                 catch(error){
                     this.mult *= -1;
@@ -119,9 +136,12 @@ class particle {
             if (p.hue > 255){
                 p.hue = 0;
             }
-            // This tests for changes in any live contols, running setvals method if so
+            // This tests for changes in any live contols, running set methods if so
             if (set == true){
-                p.setvals();
+                p.setMult(mult || 0.001);
+                p.setThresh(thresh || 300);
+                p.setLimit(drag || 0);
+                p.setHueinc(hue || 0);
             }
             stroke(p.hue, p.bright, 255);
             // Exaggerates vector from lastPos to pos.
