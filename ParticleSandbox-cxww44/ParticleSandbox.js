@@ -26,7 +26,7 @@ class particle {
         this.mouseThresh = 300;
         this.mult = 0.001;
         this.limit = 6;
-        this.hueinc = 1;
+        this.hueinc = 3;
     }
     // Get and set methods here handle measuring the time between two actions
     get timediff() {
