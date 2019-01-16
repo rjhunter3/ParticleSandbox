@@ -88,9 +88,9 @@ The value used to increment the hue of moving particles is set here to `hue` if 
 
 This method concerns the calculation of the movement of each particle, and involves interpreting the user's interaction with the mouse. Initially, the position of the particle is calibrated and the distance from the particle and the mouse cursor determined. Then, the changeable property `this.mouseThresh` is used to determine if the particle lies within the area within which it can be interacted with and moved. Also, if the particle does indeed lie within this area, this code increments the hue value of the particle through the changeable property `this.hueInc`. After this, the velocity is calculated and limited by the changeable property `this.limit`, and the particle is kept in the screen bounds, so that it remains on the screen.
 
-### `draw(particleCount = 3000, particles, set = false)`
+### `draw(particleCount = 3000, particles, set = false, render)`
 
-This method involves calculation for each particle, the number of which determined by `particleCount` with each particle existing in the `particles` array, and tests for some mouse inputs. Initially, a test for right click is performed and if a right click is detected the screen is reset. Then a test for centre mouse click is performed. If this returns true, the effect of the mouse cursor on the particles is toggled between 'attract' and 'repel'. In order to solve an issue deriving from multiple middle clicks in quick succession, the time difference get and set methods are used here to ensure that at least one second has passed between successive middle clicks (if this were not the case, it was possible for some particles to attract and some others to repel). Next, for each of the particles, the `move()` method is called and a test for changes in the controls is performed, linking to the various set methods if a change is indeed detected through a change in the value of `set` from false to true.
+This method involves calculation for each particle, the number of which determined by `particleCount` with each particle existing in the `particles` array, and tests for some mouse inputs. Initially, a test for right click is performed and if a right click is detected the screen is reset. Then a test for centre mouse click is performed. If this returns true, the effect of the mouse cursor on the particles is toggled between 'attract' and 'repel'. In order to solve an issue deriving from multiple middle clicks in quick succession, the time difference get and set methods are used here to ensure that at least one second has passed between successive middle clicks (if this were not the case, it was possible for some particles to attract and some others to repel). Next, for each of the particles, the `move()` method is called and a test for changes in the controls is performed, linking to the various set methods if a change is indeed detected through a change in the value of `set` from false to true. Also included is the parameter `render` which provides scope to run the class with an optional p5 renderer object if desired.
 
 ### `reset(particleCount = 3000, particles = [])`
 
@@ -126,9 +126,9 @@ This slider input alters the rate at which the hue of the particles affected by 
 
 Toggles between the attract/repel effects of the presence of the mouse. Note that the middle mouse click also performs this same function.
 
-### Default
+### Defaults
 
-Resets all form controls to their default values, most of these default values are the same as in the original sketch, with the exception of the hue rate of change as this is a completely new property.
+Resets all form controls to their default values. Most of these default values are the same as in the original sketch, with the exception of the hue rate of change as this is a completely new property.
 
 ### Clear Screen
 

@@ -104,8 +104,13 @@ class particle {
         }
     }
     // Draw method involves code to test mouse inputs and move individual particles
-    draw(particleCount = 3000, particles, set = false) {
-        background(10);
+    draw(particleCount = 3000, particles, set = false, render) {
+        if (render) {
+            render.background(10);
+        } 
+        else {
+            background(10);
+        }
         // Tests for right click, which resets the screen
         if (mouseIsPressed && mouseButton == RIGHT) {
             this.reset(particleCount, particles);

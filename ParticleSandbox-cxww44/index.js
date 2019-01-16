@@ -7,6 +7,7 @@
 var particleCount = 3000;
 var particles = [];
 var globalHue;
+var render;
 var mult = 0.001;
 var drag = 6;
 var thresh = 300;
@@ -23,7 +24,7 @@ function setup() {
 }
 // Draw function calls the draw method of the particle object
 function draw() {
-    c.draw(particleCount, particles, set);
+    c.draw(particleCount, particles, set, render);
 }
 // Revert function resets the screen and sets particleCount to the value defined by the user
 function revert() {
