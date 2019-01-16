@@ -23,7 +23,7 @@ This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unpo
 
 See LICENCE.MD to view a full offline copy of the licence.
 
-Also included in code used from other licences is p5.js Licenced under LGPL 2.1.
+Also included in code used from other licences is p5.js Licenced under [LGPL 2.1](https://github.com/processing/p5.js/blob/master/license.txt).
 
 ## Files Included
 
@@ -31,7 +31,7 @@ Included with this documentation are the following files:
 
 - LICENCE.MD containing a full offline copy of the licence of this distribution.
 - ParticleSandbox.js containing the class definition.
-- index.html and index.js containing HTML and javascript to set up the example page and provide form controls.
+- index.html and index.js containing HTML and Javascript to set up the example page and provide form controls.
 
 ## Controls and Features
 
@@ -50,7 +50,7 @@ This provides means to set up the particle class with parameters `x` and `y` den
 
 ### `get timediff()` and `set date(time1)`
 
-Both of these get and set methods involve setting up a `timediff` variable in the get method which determines the time between two actions. Through the use of the seperate set method, which sets the property `this.time` to be updated with the past time when an action occurred, and the get method, which calculates the difference between this set time and the current time, such time differences can be established. This was needed in this example, as using the centre mouse click to toggle the attract/repel feature in particles in quick succession proved problematic and this sets a 1 second window between changes.
+Both of these get and set methods involve setting up a `timediff` variable in the get method which determines the time between two actions. Through the use of the seperate set method, which sets the property `this.time` to be updated with the past time (`time1`) when an action occurred and the get method, which calculates the difference between this set time and the current time, such time differences can be established. This was needed in this example, as using the centre mouse click to toggle the attract/repel feature in particles in quick succession proved problematic and this sets a 1 second window between changes.
 
 ### `getMult()`
 
@@ -134,9 +134,9 @@ Resets all form controls to their default values. Most of these default values a
 
 Quite self-explanatory. This clears the screen, with the clear sketch retaining the slider values and particle count given.
 
-## Eslint
+## ESLint
 
-Eslint was ran with files index.js and ParticleSandbox.js under the following:
+ESLint was ran with files index.js and ParticleSandbox.js under the following:
 
     ? How would you like to configure ESLint? Answer questions about your style
     ? Which version of ECMAScript do you use? ES2015
@@ -150,4 +150,4 @@ Eslint was ran with files index.js and ParticleSandbox.js under the following:
     ? Do you require semicolons? Yes
     ? What format do you want your config file to be in? JavaScript
    
-In addition to these, to ensure that the p5js syntax does not cause problems and return errors, [eslint-config-p5js](https://www.npmjs.com/package/eslint-config-p5js?fbclid=IwAR2jkfJLbr5icxBIWWvRX7ieQFMmhXhbgUVCURbHFV1GT40bja-miZWFdoI) was installed as an npm package.
+In addition to these, to ensure that the p5.js syntax does not cause problems and return errors, [eslint-config-p5js](https://www.npmjs.com/package/eslint-config-p5js?fbclid=IwAR2jkfJLbr5icxBIWWvRX7ieQFMmhXhbgUVCURbHFV1GT40bja-miZWFdoI) was installed as an npm package.
