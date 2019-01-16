@@ -26,7 +26,7 @@ class particle {
         this.mouseThresh = 300;
         this.mult = 0.001;
         this.limit = 6;
-        this.hueinc = 3;
+        this.hueInc = 3;
     }
     // Get and set methods here handle measuring the time between two actions
     get timediff() {
@@ -47,8 +47,8 @@ class particle {
     getLimit() {
         return this.limit;
     }
-    getHueinc() {
-        return this.hueinc;
+    getHueInc() {
+        return this.hueInc;
     }
     setMult(mult) {
         this.mult = mult || this.mult;
@@ -59,8 +59,8 @@ class particle {
     setLimit(drag) {
         this.limit = drag || 0;
     }
-    setHueinc(hue) {
-        this.hueinc = hue || 0;
+    setHueInc(hue) {
+        this.hueInc = hue || 0;
     }
     // Move method calculates the movement of each particle, on interaction with the mouse.
     move() {
@@ -77,8 +77,8 @@ class particle {
             push.normalize();
             push.mult((this.mouseThresh - mouseDist) * this.mult);
             this.acc.add(push);
-            // Increments the hue value (by this.hueinc)
-            this.hue += this.hueinc;
+            // Increments the hue value (by this.hueInc)
+            this.hue += this.hueInc;
         } 
         // Calculates the velocity and limits it to a set value (this.limit)
         this.vel.add(this.acc);
@@ -141,7 +141,7 @@ class particle {
                 p.setMult(mult || 0.001);
                 p.setThresh(thresh || 300);
                 p.setLimit(drag || 0);
-                p.setHueinc(hue || 0);
+                p.setHueInc(hue || 0);
             }
             stroke(p.hue, p.bright, 255);
             // Exaggerates vector from lastPos to pos.
