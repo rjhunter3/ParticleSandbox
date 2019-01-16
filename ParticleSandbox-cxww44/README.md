@@ -11,7 +11,7 @@ The class provides the means to set up a 'Particle Sandbox' effect on the screen
 
 On index.html, form controls are given, providing an ability to change some of the properties of the sketch and provide scope to customise the appearence.
 
-This project was undertaken using ECMAScript version 2015, and was mainly tested with Firefox 64.0.2 (64-bit). Despite this, the class should work with most other modern browsers. 
+This project was undertaken using ECMAScript version 2015, and was mainly tested with Firefox 64.0.2 (64-bit). Despite this, the sketch should work with most other modern browsers. 
 
 ## Licence
 
