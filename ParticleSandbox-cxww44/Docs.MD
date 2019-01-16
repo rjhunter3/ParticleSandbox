@@ -1,9 +1,17 @@
 # Documentation - Particle Sandbox
-## Introduction
+## Introduction and Acknowledgement
 
 The particle sandbox class is an adaptation of the sketch 'Particle Sandbox' by Jason Labbe from OpenProcessing.org ([source](https://www.openprocessing.org/sketch/605835)) 
 into a reuseable component using a javascript class conforming to the 
 COMP1101 Programming Summative Assessment specifications ([available here](https://github.com/stevenaeola/gitpitch/blob/master/prog/assessment_p5/README.md)).
+
+## Description
+
+The class provides the means to set up a 'Particle Sandbox' effect on the screen, with interactable particles which are repelled or attracted by the presence of the mouse cursor, somewhat alike magnetic attraction and repulsion between the cursor and the individual particles. This effect can be experienced on the screen by opening index.html and moving the cursor around.
+
+On index.html, form controls are given, providing an ability to change some of the properties of the sketch and provide scope to customise the appearence.
+
+This project was undertaken using ECMAScript version 2015, and was mainly tested with Firefox 64.0.2 (64-bit). Despite this, the class should work with most other modern browsers. 
 
 ## Licence
 
@@ -21,7 +29,6 @@ Also included in code used from other licences is p5.js Licenced under LGPL 2.1.
 
 Included with this documentation are the following files:
 
-- Folder containing a copy of the original code and files created by Jason Labbe downloaded directly from [OpenProcessing](https://www.openprocessing.org/sketch/605835)
 - LICENCE.MD containing a full offline copy of the licence of this distribution
 - ParticleSandbox.js containing the class definition
 - index.html and index.js containing HTML and javascript to set up the example page and provide form controls
@@ -31,7 +38,7 @@ Included with this documentation are the following files:
 - The example HTML page provides form controls to change values of variables
 - Alike the original, right click resets the screen 
 - Middle mouse button toggles between attract/repel, but there's no need to hold middle mouse button as in the original.
-- Deviating from the original, moving particles now change hue, the speed of which can be determined by the user in the HTML form controls.
+- Deviating from the original, moving particles now can change hue, the speed of which can be determined by the user in the HTML form controls.
 
 ## Explanation - ParticleSandbox.js
 
